@@ -1,6 +1,8 @@
 'use_strict'
 
 const http = require('http')
+const fs = require('fs')
+const path = require('path')
 const port = process.env.PORT || 8080
 
 const server = http.createServer();
@@ -8,12 +10,18 @@ const server = http.createServer();
 server.on('request', onRequest)
 server.on('listening', onListening)
 
-server.listen(port);
+server.listen(port)
 
 function onRequest(req, res){
-	res.end('Hello io.js')
+	var fileName = path.join(__dirname, 'public', 'index.html')
+	fs.readFile(fileName, function(err, file){
+		if (err){
+			return res.end(err.message)
+		}
+		res.end(file)
+	})
 }
 
 function onListening(){
-	console.log('Servidor escuchando en puerto ' + port)
+	console.log('http://localhost:'+port+'/')
 }
