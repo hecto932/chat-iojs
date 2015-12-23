@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hecto932/chat-iojs/issues"
   },
-  "homepage": "https://github.com/hecto932/chat-iojs#readme"
+  "homepage": "https://github.com/hecto932/chat-iojs#readme",
+  "dependencies": {
+    "st": "^1.1.0"
+  }
 }
