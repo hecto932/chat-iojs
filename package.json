@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/hecto932/chat-iojs#readme",
   "dependencies": {
-    "st": "^1.1.0"
+    "st": "^1.1.0",
+    "webrtc2images": "^1.4.4"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1"
   }
 }
