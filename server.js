@@ -1,4 +1,4 @@
-'use_strict'
+'use strict';
 
 const http = require('http')
 const fs = require('fs')
@@ -13,12 +13,14 @@ server.on('listening', onListening)
 server.listen(port)
 
 function onRequest(req, res){
-	var fileName = path.join(__dirname, 'public', 'index.html')
-	fs.readFile(fileName, function(err, file){
-		if (err){
-			return res.end(err.message)
-		}
-		res.end(file)
+	let index = path.join(__dirname, 'public', 'index.html')
+	
+	res.setHeader('Content-Type', 'text/html')
+	let rs = fs.createReadStream(index)
+	rs.pipe(res)
+
+	res.on('error', function(err){
+		res.end(err.message)
 	})
 }
 
