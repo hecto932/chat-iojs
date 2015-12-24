@@ -8,6 +8,7 @@ const async = require('async')
 const dataURIBuffer = require('data-uri-to-buffer')
 const EventEmitter = require('events').EventEmitter
 const listFiles = require('./list')
+const ffmpeg = require('./ffmpeg')
 
 module.exports = function (images) {
   let events = new EventEmitter()
@@ -18,8 +19,8 @@ module.exports = function (images) {
   async.series([
     decodeImages,
     createVideo,
-    encodeVideo,
-    cleanup
+    encodeVideo
+    //cleanup
   ], convertFinished)
 
   // Decode images to files
@@ -41,7 +42,11 @@ module.exports = function (images) {
 
   // Create video from images with ffmpeg
   function createVideo (done) {
-    done()
+    ffmpeg({
+      baseName: baseName,
+      folder: tmpDir,
+
+    }, done)
   }
 
   // Encode video
