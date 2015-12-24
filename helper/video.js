@@ -7,7 +7,7 @@ const uuid = require('uuid')
 const async = require('async')
 const dataURIBuffer = require('data-uri-to-buffer')
 const EventEmitter = require('events').EventEmitter
-const listFiles = require('../helper/list')
+const listFiles = require('./list')
 
 module.exports = function (images) {
   let events = new EventEmitter()
@@ -32,7 +32,7 @@ module.exports = function (images) {
     let fileName = `${baseName}-${count++}.jpg`
     let buffer = dataURIBuffer(image)
     let ws = fs.createWriteStream(path.join(tmpDir, fileName))
-
+    
     ws.on('error', done)
       .end(buffer, done)
 
@@ -51,13 +51,30 @@ module.exports = function (images) {
 
   // Cleanup temp folder
   function cleanup (done) {
-  	events.emit('log', 'Cleaning up')
+    events.emit('log', 'Cleaning up')
 
-  	listFiles(tmpDir, baseName function(err, files){
-  		if(err) return done(err)
-  			
-  	})
-    done()
+    listFiles(tmpDir, baseName, function (err, files) {
+      if (err) return done(err)
+
+      // delete files
+      deleteFiles(files, done)
+    })
+  }
+
+  // Delete all files
+  function deleteFiles (files, done) {
+    async.each(files, deleteFile, done)
+  }
+
+  // Delete one file
+  function deleteFile (file, done) {
+    events.emit('log', `Deleting ${file}`)
+
+    fs.unlink(path.join(tmpDir, file), function (err) {
+      // ignore error
+
+      done()
+    })
   }
 
   // Convertion finished

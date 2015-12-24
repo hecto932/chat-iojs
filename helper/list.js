@@ -1,19 +1,21 @@
-'use strict';
+'use strict'
 
 const fs = require('fs')
 
-module.exports = function(folder, filter, callback){
-	fs.readdir(folder, onReaddir)
+module.exports = function (folder, filter, callback) {
 
-	function onReaddir(err, results){
-		if(err) return callback(err)
+  fs.readdir(folder, onReaddir)
 
-		let files = results.filter(filterFiles)
+  function onReaddir (err, results) {
+    if (err) return callback(err)
 
-		callback(null, files)
-	}
+    let files = results.filter(filterFiles)
 
-	function filterFiles(file){
-		return file.startsWith(filter)
-	}
+    callback(null, files)
+  }
+
+  function filterFiles (file) {
+    return file.startsWith(filter)
+  }
+
 }
