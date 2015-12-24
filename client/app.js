@@ -34,3 +34,7 @@ record.addEventListener('click', function(e){
 		})
 	})
 }, false)
+
+function logError (err) {
+  console.error(err)
+}
