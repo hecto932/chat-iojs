@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/hecto932/chat-iojs#readme",
   "dependencies": {
+    "async": "^1.5.0",
     "body": "^5.1.0",
     "course": "0.0.1",
     "st": "^1.1.0",
