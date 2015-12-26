@@ -1,5 +1,5 @@
-2015/12/26-00:20:07.682067 b4bffb40 Recovering log #3
-2015/12/26-00:20:07.682278 b4bffb40 Level-0 table #5: started
-2015/12/26-00:20:07.860936 b4bffb40 Level-0 table #5: 36444 bytes OK
-2015/12/26-00:20:07.995802 b4bffb40 Delete type=3 #2
-2015/12/26-00:20:07.995915 b4bffb40 Delete type=0 #3
+2015/12/26-00:22:25.881097 b3dffb40 Recovering log #6
+2015/12/26-00:22:25.882007 b3dffb40 Level-0 table #8: started
+2015/12/26-00:22:25.956895 b3dffb40 Level-0 table #8: 65224 bytes OK
+2015/12/26-00:22:26.102907 b3dffb40 Delete type=3 #4
+2015/12/26-00:22:26.103076 b3dffb40 Delete type=0 #6
