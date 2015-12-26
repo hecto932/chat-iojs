@@ -21,8 +21,8 @@ module.exports = function (images) {
   async.series([
     decodeImages,
     createVideo,
-    encodeVideo
-    //cleanup
+    encodeVideo,
+    cleanup
   ], convertFinished)
 
   // Decode images to files
