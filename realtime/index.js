@@ -7,11 +7,15 @@ const helper = require('../helper')
 module.exports = function (server){
 	const db = database()
 	const io = socketio(server)
+	let users = 0
 
 	io.on('connection', onConnection)
 
 	function onConnection(socket){
+		users++
+		console.log(`Users : ${users}`)
 		console.log(`Client connected ${socket.id}`)
+		socket.emit('User connected', { users : users })
 
 		db.list(function(err, messages){
 			if(err) return console.log(err)
@@ -35,5 +39,13 @@ module.exports = function (server){
 				socket.emit('messageack', message)
 			})
 		})
+
+		socket.on('disconnect', function () {
+	    	users--
+	    	io.emit('User disconnected', { users : users })
+	    	console.log(`Users : ${users}`)
+	  	});
 	}
+
+	
 }

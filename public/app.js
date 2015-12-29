@@ -31,6 +31,10 @@ form.addEventListener('submit', function (e) {
 
 }, false)
 
+socket.on('User disconnected', function(data){
+  console.log(data)
+})
+
 socket.on('message', addMessage)
 
 socket.on('messageack', function(message){
