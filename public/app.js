@@ -31,6 +31,10 @@ form.addEventListener('submit', function (e) {
 
 }, false)
 
+socket.on('User connected', function(data){
+  console.log(data)
+})
+
 socket.on('User disconnected', function(data){
   console.log(data)
 })
@@ -74,11 +78,11 @@ var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<li>\n  <video class=\"video-container\" src=\""
+  return "<div class=\"row\">\n    <video class=\"col-xs-4 video-container\" src=\""
     + alias4(((helper = (helper = helpers.video || (depth0 != null ? depth0.video : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"video","hash":{},"data":data}) : helper)))
-    + "\" loop autoplay></video>\n  <p>"
+    + "\" loop autoplay></video>\n    <p class=\"col-xs-8\">\n        "
     + alias4(((helper = (helper = helpers.message || (depth0 != null ? depth0.message : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"message","hash":{},"data":data}) : helper)))
-    + "</p>\n</li>";
+    + "\n    </p>\n</div>\n<hr>";
 },"useData":true});
 
 },{"hbsfy/runtime":51}],3:[function(require,module,exports){
