@@ -106,6 +106,10 @@ input[type="text"] {
   }
 }
 
+.page-header{
+  margin-top: 6em;
+}
+
 .main{
     bottom: 205px;
   }
